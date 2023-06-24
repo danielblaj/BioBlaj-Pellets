@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="stylecomenzi.css">
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-compat.js"></script>
+    <title>Pagina de Comandă</title>
+</head>
+<body>
+    <h1>Comandă produs</h1>
+
+    <form id="formComanda" method="POST">
+        <label for="nume">Nume:</label>
+        <input type="text" name="nume" id="nume" required><br>
+
+        <label for="prenume">Prenume:</label>
+        <input type="text" name="prenume" id="prenume" required><br>
+
+        <label for="telefon">Telefon:</label>
+        <input type="text" name="telefon" id="telefon" required><br>
+
+        <label for="adresa">Adresa:</label>
+        <input type="text" name="adresa" id="adresa" required><br>
+
+        <label for="mail">E-mail:</label>
+        <input type="email" name="mail" id="mail" required><br>
+
+        <label for="produs">Produs:</label>
+        <select name="produs" id="produs" required>
+            <option value="sac">Sac 15kg</option>
+            <option value="palet">Palet 1000kg</option>
+        </select><br>
+
+        <label for="cantitate">Cantitate:</label>
+        <input type="number" name="cantitate" id="cantitate" required min="1"><br>
+
+        <input type="submit" value="Trimite">
+    </form>
+
+    <div id="pret"></div>
+
+    <p id="mesajSucces" style="display: none;">Comanda a fost trimisă cu succes!</p>
+
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyBDzAoKQzRfUwaOARAekF_W4iZHaD2QFiM",
+            authDomain: "bioblajpellets-83f63.firebaseapp.com",
+            databaseURL: "https://bioblajpellets-83f63-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "bioblajpellets-83f63",
+            storageBucket: "bioblajpellets-83f63.appspot.com",
+            messagingSenderId: "541315973427",
+            appId: "1:541315973427:web:1bd58052a7e5301e8c7e46"
+        };
+        firebase.initializeApp(firebaseConfig);
+        var database = firebase.database();
+        var formComanda = document.getElementById("formComanda");
+        var cantitateInput = document.getElementById("cantitate");
+        cantitateInput.addEventListener("change", function () {
+            var produs = document.getElementById("produs").value;
+            var cantitate = cantitateInput.value;
+            var pret = 0;
+            if (produs === "sac") {
+                pret = cantitate * 25;
+            } else if (produs === "palet") {
+                pret = cantitate * 1500;
+            }
+            var pretElement = document.getElementById("pret");
+            pretElement.innerText = "Preț: " + pret + " RON";
+        });
+        formComanda.addEventListener("submit", function (event) {
+            event.preventDefault();
+            var nume = document.getElementById("nume").value;
+            var prenume = document.getElementById("prenume").value;
+            var telefon = document.getElementById("telefon").value;
+            var adresa = document.getElementById("adresa").value;
+            var mail = document.getElementById("mail").value;
+            var produs = document.getElementById("produs").value;
+            var cantitate = document.getElementById("cantitate").value;
+            var comenziRef = database.ref("comenzi");
+            comenziRef.push({
+                nume: nume,
+                prenume: prenume,
+                telefon: telefon,
+                adresa: adresa,
+                mail: mail,
+                produs: produs,
+                cantitate: cantitate
+            });
+            var mesajSucces = document.getElementById("mesajSucces");
+            mesajSucces.style.display = "block";
+            return false; 
+        });
+    </script>
+</body>
+</html>

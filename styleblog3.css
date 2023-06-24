@@ -1,0 +1,44 @@
+body {
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+    color: white;
+    background-image: linear-gradient(rgba(0,0,0,0.5),#6b6969), url(poze/fundalblog3.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin: 40px 0;
+    text-align: center;
+}
+
+bp {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 40px auto;
+}
+
+.paragraph {
+    margin-left: 20px; 
+}
+
