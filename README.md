@@ -6,6 +6,11 @@ Aplicație web concepută cu scopul de a-mi dezvolta afacerea personală
 
 Adresa repository-ului proiectului este: https://github.com/danielblaj/BioBlaj-Pellets
 
+## Specificatii aplicatie
+
+In cadrul acestei aplicatii veti putea comanda peleti din rumegus de la firma noastră, puteti afla diverse informatii importante din lumea peletilor
+si veti putea sa ne contactati printr-un formular de mail.
+
 ## Codul Sursă, descărcarea și rularea aplicației
 
 Întregul cod sursă al proiectului se găsește în acest repository. Pentru a accesa aplicația este nevoie să descărcați codul sursă, 
